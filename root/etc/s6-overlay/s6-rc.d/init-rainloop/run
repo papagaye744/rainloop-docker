@@ -3,5 +3,7 @@
 
 # rainloop php files
 if [[ ! -d /config/www/rainloop ]]; then
+    echo 'extract rainloop server files'
+    mkdir -p /config/www/rainloop
     cp -R /rainloop /config/www/rainloop
 fi
