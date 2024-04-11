@@ -58,7 +58,7 @@ RUN \
   echo "**** install rainloop ****" && \
   cd /tmp && \
   wget -q https://www.rainloop.net/repository/webmail/rainloop-latest.zip && \
-  mkdir -f /config/www/rainloop && \
+  mkdir -p /config/www/rainloop && \
   unzip -q /tmp/rainloop-latest.zip -d /config/www/rainloop && \
   find /config/www/rainloop -type d -exec chmod 755 {} \; && \
   find /config/www/rainloop -type f -exec chmod 644 {} \; && \
