@@ -2,6 +2,8 @@
 # shellcheck shell=bash
 
 # permissions
+lsiown -R abc:abc \
+    /config/www
 
 lsiown -R abc:abc \
     /config/php

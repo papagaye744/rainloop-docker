@@ -58,11 +58,10 @@ RUN \
   echo "**** install rainloop ****" && \
   cd /tmp && \
   wget -q https://www.rainloop.net/repository/webmail/rainloop-latest.zip && \
-  mkdir -p /config/www/rainloop && \
-  unzip -q /tmp/rainloop-latest.zip -d /config/www/rainloop && \
-  find /config/www/rainloop -type d -exec chmod 755 {} \; && \
-  find /config/www/rainloop -type f -exec chmod 644 {} \; && \
-  chown -R abc:abc /config/www/rainloop && \
+  mkdir -p /rainloop && \
+  unzip -q /tmp/rainloop-latest.zip -d /rainloop && \
+  find /rainloop -type d -exec chmod 755 {} \; && \
+  find /rainloop -type f -exec chmod 644 {} \; && \
   echo "**** fix logrotate ****" && \
   sed -i "s#/var/log/messages {}.*# #g" \
     /etc/logrotate.conf && \

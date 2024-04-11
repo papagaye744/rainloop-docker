@@ -3,6 +3,7 @@
 
 # make folders
 mkdir -p \
+    /config/www \
     /config/php \
     /config/log/php \
     /run

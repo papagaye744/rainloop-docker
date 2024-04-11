@@ -1,0 +1,7 @@
+#!/usr/bin/with-contenv bash
+# shellcheck shell=bash
+
+# rainloop php files
+if [[ ! -d /config/www/rainloop ]]; then
+    cp -R /rainloop /config/www/rainloop
+fi
