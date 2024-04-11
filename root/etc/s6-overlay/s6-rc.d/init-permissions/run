@@ -1,0 +1,13 @@
+#!/usr/bin/with-contenv bash
+# shellcheck shell=bash
+
+# permissions
+
+lsiown -R abc:abc \
+    /config/php
+
+chmod -R 644 /etc/logrotate.d
+
+if [[ -f "/config/log/logrotate.status" ]]; then
+    chmod 600 /config/log/logrotate.status
+fi
