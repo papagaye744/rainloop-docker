@@ -58,16 +58,10 @@ RUN \
   echo "**** install rainloop ****" && \
   cd /tmp && \
   wget -q https://www.rainloop.net/repository/webmail/rainloop-latest.zip && \
-  wget -q https://www.rainloop.net/repository/webmail/rainloop-latest.zip.asc && \
-  wget -q https://www.rainloop.net/repository/RainLoop.asc && \
-  gpg --import RainLoop.asc && \
-  FINGERPRINT="$(LANG=C gpg --verify rainloop-latest.zip.asc rainloop-latest.zip 2>&1 \
-  | sed -n "s#Primary key fingerprint: \(.*\)#\1#p")" && \
-  if [ -z "${FINGERPRINT}" ]; then echo "ERROR: Invalid GPG signature!" && exit 1; fi && \
-  if [ "${FINGERPRINT}" != "${GPG_FINGERPRINT}" ]; then echo "ERROR: Wrong GPG fingerprint!" && exit 1; fi &&\
-  mkdir /app/rainloop && unzip -q /tmp/rainloop-latest.zip -d /app/rainloop && \
-  find /app/rainloop -type d -exec chmod 755 {} \; && \
-  find /app/rainloop -type f -exec chmod 644 {} \; && \
+  mkdir /config/www/rainloop && unzip -q /tmp/rainloop-latest.zip -d /config/www/rainloop && \
+  find /config/www/rainloop -type d -exec chmod 755 {} \; && \
+  find /config/www/rainloop -type f -exec chmod 644 {} \; && \
+  chown -R abc:abc /config/www/rainloop && \
   echo "**** fix logrotate ****" && \
   sed -i "s#/var/log/messages {}.*# #g" \
     /etc/logrotate.conf && \
